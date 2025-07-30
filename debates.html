@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debates Clásicos - Fútbol y Mate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Anton&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1a5e20;
+      --primary-light: #4caf50;
+      --secondary: #212121;
+      --dark: #212121;
+      --light: #f5f5f5;
+      --gray: #757575;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Anton', sans-serif;
+      letter-spacing: 1px;
+      font-weight: 400;
+      color: var(--primary);
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      padding: 20px 5%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo img {
+      height: 60px;
+    }
+
+    .logo-text {
+      color: var(--white);
+      font-family: 'Anton', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 1.5px;
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 8px 0;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: var(--secondary);
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                 url('imagenes/fondoverde.jpg') center/cover no-repeat;
+      color: var(--white);
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    /* Main Content */
+    .main-container {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 5%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: var(--secondary);
+      margin: 15px auto;
+    }
+
+    /* Debates Grid */
+    .debates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .debate-card {
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .debate-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .debate-image {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .debate-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .debate-content {
+      padding: 20px;
+    }
+
+    .debate-title {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .debate-excerpt {
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+
+    .read-more {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .read-more:hover {
+      background: var(--primary-light);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--primary), var(--dark));
+      color: var(--white);
+      padding: 50px 5% 30px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px 5%;
+      }
+
+
+  .logo img {
+    height: 40px;
+  }
+
+  .logo-text {
+    font-size: 1.3rem;
+  }
+
+  nav {
+    gap: 15px;
+  }
+
+  nav a {
+    font-size: 0.95rem;
+  }
+}     
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .debates-grid {
+        grid-template-columns: 1fr;
+      }
+    
+        .blog-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.blog-card-link:hover {
+  text-decoration: none;
+}
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="FUTBOLYMATE.png" alt="Logo Fútbol y Mate" >
+      </div>
+      <nav>
+        <a href="index.html">🏠Inicio</a>
+        <a href="debates.html">🗣️Debates</a>
+        <a href="competiciones.html">🏆Competiciones</a>
+        <a href="jugadores.html">⚽Jugadores</a>
+        <a href="curiosidades.html">📚Curiosidades</a>
+        <a href="sobremi.html">👤Sobre Mí</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>DEBATES</h1>
+      <p>Debates polémicos y discusiones que dividen a los hinchas</p>
+    </div>
+  </section>
+  <div class="main-container">
+    <h2 class="section-title">Comparaciones y demás</h2>
+    <div class="debates-grid">
+      <!-- Debate 1 -->
+      <a href="bocariver.html" class="blog-card-link">
+      <section href="" class="debate-card">
+        <div class="debate-image">
+          <img src="imagenes/bocariver.jpg" alt="Boca vs River">
+        </div>
+        <div class="debate-content">
+          <h3 class="debate-title">Boca vs River: El Superclásico</h3>
+          <p>Análisis completo de la rivalidad más apasionante del fútbol argentino. ¿Quién lleva ventaja en historia, títulos y pasión?</p>
+        </div>
+      </section>
+      </a>
+
+      <!-- Debate 2 -->
+      <a href="messimaradona.html" class="blog-card-link">
+      <section href="" class="debate-card">
+        <div class="debate-image">
+          <img src="imagenes/messimaradona.jpg" alt="Maradona vs Messi">
+        </div>
+        <div class="debate-content">
+          <h3 class="debate-title">Maradona vs Messi: Duelo de Ídolos</h3>
+          <p>Comparación detallada de los dos mejores jugadores argentinos. Estilos, logros y legado en el fútbol mundial.</p>
+        </div>
+      </section>
+      </a>
+            <!-- Debate 3 -->
+      <a href="holandainglaterra.html" class="blog-card-link">
+      <section href="" class="debate-card">
+        <div class="debate-image">
+          <img src="imagenes/holandainglaterra.jpg" alt="Holanda vs Inglaterra">
+        </div>
+        <div class="debate-content">
+          <h3 class="debate-title">Holanda vs Inglaterra</h3>
+          <p>Holanda, con menos marketing pero más identidad futbolística, historia y finales del mundo, demuestra que una selección puede ser más grande que Inglaterra sin necesidad de vender humo.</p>
+        </div>
+      </section>
+      </a>
+      <!-- Debate 4 -->
+      <a href="peoresfichajes.html" class="blog-card-link">
+      <section href="" class="debate-card">
+        <div class="debate-image">
+          <img src="imagenes/peoresfichajes.jpg" alt="Peores Fichajes">
+        </div>
+        <div class="debate-content">
+          <h3 class="debate-title">Los 5 peores fichajes en la historia del fútbol</h3>
+          <p>Un repaso imperdible por los 5 peores fichajes de la historia del fútbol: millones gastados, promesas rotas y rendimientos que quedaron muy lejos de las expectativas.</p>
+        </div>
+      </section>
+      </a>
+
+      <!-- Debate 5 -->
+      <a href="equiposeuropa.html" class="blog-card-link">
+      <section href="" class="debate-card">
+        <div class="debate-image">
+          <img src="imagenes/5equiposeuropa.jpg" alt="">
+        </div>
+        <div class="debate-content">
+          <h3 class="debate-title">Los 5 mejores equipos de Europa en la historia</h3>
+          <p>Un recorrido apasionante por los 5 mejores equipos de la historia del fútbol europeo: planteles legendarios, estilos inolvidables y conquistas que marcaron una era.</p>
+        </div>
+      </section>
+      </a>
+
+      <!-- Debate 6 -->
+      <a href="messironaldo.html" class="blog-card-link">
+      <section href="" class="debate-card">
+        <div class="debate-image">
+          <img src="imagenes/messicr7.jpg" alt="Cristiano vs Messi">
+        </div>
+        <div class="debate-content">
+          <h3 class="debate-title">Cristiano vs Messi: La Rivalidad Definitiva</h3>
+          <p>Un duelo eterno entre dos leyendas del fútbol: Messi vs Cristiano Ronaldo, una comparación completa que pone cara a cara sus estadísticas, estilos y legado.</p>
+        </div>
+      </section>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="copyright">
+      <p>&copy; 2025 Fútbol y Mate. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>

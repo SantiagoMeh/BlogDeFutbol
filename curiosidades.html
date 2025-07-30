@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Curiosidades - Fútbol y Mate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Anton&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1a5e20;
+      --primary-light: #4caf50;
+      --secondary: #212121;
+      --dark: #212121;
+      --light: #f5f5f5;
+      --gray: #757575;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Anton', sans-serif;
+      letter-spacing: 1px;
+      font-weight: 400;
+      color: var(--primary);
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      padding: 20px 5%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo img {
+      height: 60px;
+      transition: transform 0.3s;
+    }
+
+    .logo-text {
+      color: var(--white);
+      font-family: 'Anton', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 1.5px;
+    }
+
+    .logo-text span {
+      color: var(--secondary);
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 8px 0;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--secondary);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      bottom: 0;
+      left: 0;
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                 url('imagenes/fondoverde.jpg') center/cover no-repeat;
+      color: var(--white);
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      color: var(--white);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .hero h1 span {
+      color: var(--secondary);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--secondary);
+      color: var(--dark);
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: all 0.3s;
+      border: 2px solid var(--secondary);
+    }
+
+    .btn:hover {
+      background-color: transparent;
+      color: var(--secondary);
+    }
+
+    /* Main Content */
+    .main-container {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 5%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: var(--secondary);
+      margin: 15px auto;
+    }
+
+    /* Curiosidades Section */
+    .curiosidades-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .curiosidad-card {
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .curiosidad-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .curiosidad-header {
+      background: var(--primary);
+      color: var(--white);
+      padding: 15px 20px;
+      font-size: 1.2rem;
+    }
+
+    .curiosidad-body {
+      padding: 20px;
+    }
+
+    .curiosidad-title {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+
+    .curiosidad-content {
+      color: var(--dark);
+      margin-bottom: 15px;
+    }
+
+    .curiosidad-footer {
+      font-size: 0.9rem;
+      color: var(--gray);
+      border-top: 1px solid #eee;
+      padding-top: 15px;
+    }
+
+    /* Featured Curiosidad */
+    .featured-curiosidad {
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      margin-bottom: 50px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .featured-image {
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .featured-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .featured-content {
+      padding: 30px;
+    }
+
+    .featured-category {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--white);
+      padding: 5px 15px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    .featured-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .featured-text {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 25px;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--primary), var(--dark));
+      color: var(--white);
+      padding: 50px 5% 30px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+
+    .footer-column h3 {
+      color: var(--secondary);
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+    }
+
+    .footer-column p, .footer-column a {
+      color: #d1d1d1;
+      margin-bottom: 15px;
+      display: block;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-column a:hover {
+      color: var(--secondary);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      transition: all 0.3s;
+    }
+
+    .social-links a:hover {
+      background: var(--secondary);
+      color: var(--dark);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+
+
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="FUTBOLYMATE.png" alt="Logo Fútbol y Mate" />
+      </div>
+      <nav>
+        <a href="index.html">🏠Inicio</a>
+        <a href="debates.html">🗣️Debates</a>
+        <a href="competiciones.html">🏆Competiciones</a>
+        <a href="jugadores.html">⚽Jugadores</a>
+        <a href="curiosidades.html">📚Curiosidades</a>
+        <a href="sobremi.html">👤Sobre Mí</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>CURIOSIDADES FUTBOLERAS</h1>
+      <p>Descubre los datos más sorprendentes, récords insólitos y anécdotas fascinantes del mundo del fútbol. 
+        Esas historias que no aparecen en las estadísticas pero que hacen grande este deporte.</p>
+    </div>
+  </section>
+
+<br> </br>
+    <h2 class="section-title">Curiosidades</h2>
+    <div class="curiosidades-container">
+      <div class="curiosidad-card">
+        <div class="curiosidad-header">
+          ⚽ Récord Mundial
+        </div>
+        <div class="curiosidad-body">
+          <h3 class="curiosidad-title">El gol más rápido de la historia</h3>
+          <p class="curiosidad-content">
+El gol más rápido de la historia del fútbol fue marcado por Gavin Stokes en 2017, con un tiempo de 2.1 segundos. Este gol se produjo durante un partido de juveniles de la Superliga Oeste de Escocia.          </p>
+          <div class="curiosidad-footer">
+            Fue en un partido entre Mary Hill y Clydebank
+          </div>
+        </div>
+      </div>
+
+      <div class="curiosidad-card">
+        <div class="curiosidad-header">
+          🏟️ Estadios
+        </div>
+        <div class="curiosidad-body">
+          <h3 class="curiosidad-title">El estadio más grande del mundo</h3>
+          <p class="curiosidad-content">
+           El estadio más grande del mundo es el Estadio Rungrado Primero de Mayo, ubicado en Pionyang, Corea del Norte.Este estadio no solo destaca por su tamaño, sino también por su diseño, que se asemeja a una flor de magnolia.</p>
+          <div class="curiosidad-footer">
+            Capacidad: 114.000 espectadores
+          </div>
+        </div>
+      </div>
+
+      <div class="curiosidad-card">
+        <div class="curiosidad-header">
+          🏆 Mundial
+        </div>
+        <div class="curiosidad-body">
+          <h3 class="curiosidad-title">Máximo goleador en mundiales</h3>
+          <p class="curiosidad-content">
+Con 16 goles anotados en cuatro ediciones del torneo, Miroslav Klose es el máximo goleador en la historia de la Copa del Mundo.          </p>
+          <div class="curiosidad-footer">
+           Mirosław Klose es un exfutbolista y entrenador alemán.
+          </div>
+        </div>
+      </div>
+
+      <div class="curiosidad-card">
+        <div class="curiosidad-header">
+          🧑‍🚀 Insólito
+        </div>
+        <div class="curiosidad-body">
+          <h3 class="curiosidad-title">Fútbol en el espacio</h3>
+          <p class="curiosidad-content">
+           Armstrong era un apasionado del fútbol y tenía la intención de patear un balón en la Luna. Sin embargo, la NASA rechazó la idea, probablemente por razones logísticas y de seguridad.          
+        <div class="curiosidad-footer">
+          La llegada del Apolo 11 a la Luna en 1969 fue un hito histórico.
+          </div>
+        </div>
+      </div>
+
+      <div class="curiosidad-card">
+        <div class="curiosidad-header">
+          👕 Equipación
+        </div>
+        <div class="curiosidad-body">
+          <h3 class="curiosidad-title">Brasil jugó con la camiseta de Boca Juniors</h3>
+          <p class="curiosidad-content">
+           Brasil vistió con la camiseta oficial de Boca Juniors e Independiente de Avellaneda (versión no oficial) y no fue la única selección sudamericana en vestir camisetas de clubes en aquel certamen,          </p>
+          <div class="curiosidad-footer">
+           Copa América de Argentina celebrada en 1937  
+          </div>
+        </div>
+      </div>
+
+      <div class="curiosidad-card">
+        <div class="curiosidad-header">
+          💰 Fichajes
+        </div>
+        <div class="curiosidad-body">
+          <h3 class="curiosidad-title">El fichaje más caro de la historia</h3>
+          <p class="curiosidad-content">
+           El fichaje más caro de la historia del fútbol mundial es el de Neymar por el París Saint-Germain, quien pagó 222 millones de euros al Barcelona en 2017. </p>  
+           <div class="curiosidad-footer">
+           173 partidos jugados | 118 goles | 77 asistencias.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="copyright">
+      <p>&copy; 2025 Fútbol y Mate. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>

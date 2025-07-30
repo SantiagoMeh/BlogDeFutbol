@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Competiciones - Fútbol y Mate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Anton&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1a5e20;
+      --primary-light: #4caf50;
+      --secondary: #212121;
+      --dark: #212121;
+      --light: #f5f5f5;
+      --gray: #757575;
+      --white: #ffffff;
+      --champions: #1a3e8c;
+      --libertadores: #ffe700;
+      --premier: #3d195b;
+      --liga-arg: #75c1e0;
+      --mundial: #2d572c;
+      --copa-america: #4CAF50;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Anton', sans-serif;
+      letter-spacing: 1px;
+      font-weight: 400;
+      color: var(--primary);
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      padding: 20px 5%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo img {
+      height: 60px;
+    }
+
+    .logo-text {
+      color: var(--white);
+      font-family: 'Anton', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 1.5px;
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 8px 0;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: var(--secondary);
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                  url('imagenes/fondoverde.jpg') center/cover no-repeat;
+      color: var(--white);
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    /* Main Content */
+    .main-container {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 5%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: var(--secondary);
+      margin: 15px auto;
+    }
+
+    /* Menú desplegable */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 40px;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .dropbtn {
+      background-color: var(--primary);
+      color: white;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dropbtn:hover {
+      background-color: var(--primary-light);
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: var(--white);
+      min-width: 100%;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 0 0 5px 5px;
+      overflow: hidden;
+    }
+
+    .dropdown-content a {
+      color: var(--dark);
+      padding: 12px 20px;
+      text-decoration: none;
+      display: block;
+      transition: background 0.3s;
+    }
+
+    .dropdown-content a:hover {
+      background-color: var(--light);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+      border-radius: 5px 5px 0 0;
+    }
+
+    /* Competiciones Grid */
+    .competiciones-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .competicion-card {
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .competicion-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .competicion-image {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .competicion-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .competicion-card:hover .competicion-image img {
+      transform: scale(1.1);
+    }
+
+    .competicion-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .badge-champions {
+      background: var(--champions);
+    }
+
+    .badge-libertadores {
+      background: var(--libertadores);
+      color: var(--dark);
+    }
+
+    .badge-premier {
+      background: var(--premier);
+    }
+
+    .badge-liga-arg {
+      background: var(--liga-arg);
+      color: var(--dark);
+    }
+
+    .badge-mundial {
+      background: var(--mundial);
+    }
+
+    .badge-copa-america {
+      background: var(--copa-america);
+    }
+
+    .competicion-content {
+      padding: 20px;
+    }
+
+    .competicion-title {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .competicion-meta {
+      display: flex;
+      justify-content: space-between;
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    .competicion-excerpt {
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .read-more {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .read-more:hover {
+      background: var(--primary-light);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--primary), var(--dark));
+      color: var(--white);
+      padding: 50px 5% 30px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .competiciones-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .dropdown {
+        max-width: 100%;
+      }
+    }
+        .blog-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.blog-card-link:hover {
+  text-decoration: none;
+}
+@media (max-width: 768px) {
+  header {
+    padding: 10px 5%;
+  }
+
+  .logo img {
+    height: 40px;
+  }
+
+  .logo-text {
+    font-size: 1.3rem;
+  }
+
+  nav {
+    gap: 15px;
+  }
+
+  nav a {
+    font-size: 0.95rem;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="FUTBOLYMATE.png" alt="Logo Fútbol y Mate">
+      </div>
+      <nav>
+        <a href="index.html">🏠Inicio</a>
+        <a href="debates.html">🗣️Debates</a>
+        <a href="competiciones.html">🏆Competiciones</a>
+        <a href="jugadores.html">⚽Jugadores</a>
+        <a href="curiosidades.html">📚Curiosidades</a>
+        <a href="sobremi.html">👤Sobre Mí</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>COMPETICIONES</h1>
+      <p>Los torneos que hacen latir el corazón del fútbol</p>
+    </div>
+  </section>
+
+  <div class="main-container">
+    <h2 class="section-title">Explora las Mejores Competiciones</h2>
+    
+    <!-- Grid de Competiciones -->
+    <div class="competiciones-grid">
+      <!-- Champions League -->
+      <a href="mejorespartidoschampions.html" class="blog-card-link">
+      <div class="competicion-card" id="champions">
+        <div class="competicion-image">
+          <img src="imagenes/partidoschampions.jpg" alt="Champions League">
+          <span class="competicion-badge badge-champions">Champions</span>
+        </div>
+        <div class="competicion-content">
+          <h3 class="competicion-title">Los mejores partidos de la UEFA Champions League</h3>
+          <div class="competicion-meta">
+            <span>Veremos los mejores partidos de esta competición</span>
+            <span></span>
+          </div>
+          <p class="competicion-excerpt">
+            La máxima competencia de clubes en Europa. Desde el Real Madrid de Di Stéfano hasta el actual equipo parisino ganador del torneo.
+          </p>
+        </div>
+      </div>
+      </a>
+
+      <!-- Libertadores -->
+      <a href="ganadoreslibertadores.html" class="blog-card-link">
+      <div class="competicion-card" id="libertadores">
+        <div class="competicion-image">
+          <img src="imagenes/ganadoreslibertadores.jpg" alt="Copa Libertadores">
+          <span class="competicion-badge badge-libertadores">Libertadores</span>
+        </div>
+        <div class="competicion-content">
+          <h3 class="competicion-title">Los equipos mas ganadores de la Libertadores</h3>
+          <div class="competicion-meta">
+            <span>Veremos los equipos que la ganaron y sus figuras</span>
+            <span></span>
+          </div>
+          <p class="competicion-excerpt">
+            El torneo más importante de América. Desde sus inicios en 1960 hasta la era moderna, con los equipos argentinos como los más ganadores.
+          </p>
+        </div>
+      </div>
+      </a>
+
+      <!-- Premier League -->
+      <a href="dtspremier.html" class="blog-card-link">
+      <div class="competicion-card" id="premier">
+        <div class="competicion-image">
+          <img src="imagenes/dtspremier.jpg" alt="Premier League">
+          <span class="competicion-badge badge-premier">Premier League</span>
+        </div>
+        <div class="competicion-content">
+          <h3 class="competicion-title">Directores Técnicos de la Premier</h3>
+          <div class="competicion-meta">
+            <span>Técnicos que marcaron épocas.</span>
+            <span></span>
+          </div>
+          <p class="competicion-excerpt">
+            La liga más popular del mundo. Desde su creación hasta el dominio actual de Manchester City, pasando por el Arsenal invencible.
+          </p>
+        </div>
+      </div>
+      </a>
+
+      <!-- Liga Argentina -->
+      <a href="clasicosargentinos.html" class="blog-card-link">
+      <div class="competicion-card" id="liga-argentina">
+        <div class="competicion-image">
+          <img src="imagenes/clasicos.jpg" alt="Liga Argentina">
+          <span class="competicion-badge badge-liga-arg">Liga Argentina</span>
+        </div>
+        <div class="competicion-content">
+          <h3 class="competicion-title">Los clásicos más calientes del país</h3>
+          <div class="competicionA-meta">
+            <span>Del Superclásico hasta el clásico del ascenso</span>
+          </div>
+          <p class="competicion-excerpt">
+            Un repaso intenso por los clásicos más calientes del fútbol argentino, donde la pasión, la historia y la rivalidad se viven al máximo dentro y fuera de la cancha.
+          </p>
+        </div>
+      </div>
+      </a>
+
+      <!-- Mundial -->
+      <a href="golesenmundiales.html" class="blog-card-link">
+      <div class="competicion-card" id="mundial">
+        <div class="competicion-image">
+          <img src="imagenes/golesmundiales.jpg" alt="Copa del Mundo">
+          <span class="competicion-badge badge-mundial">Mundial</span>
+        </div>
+        <div class="competicion-content">
+          <h3 class="competicion-title">Mejores goles de cada edición</h3>
+          <div class="competicion-meta">
+            <span>Los mejores goles de cada mundial</span>
+            <span>⏳ Cada 4 años</span>
+          </div>
+          <p class="competicion-excerpt">
+            El torneo más prestigioso del fútbol mundial. Desde Uruguay 1930 hasta Qatar 2022, repasamos las ediciones más memorables y los goles que hicieron historia.
+          </p>
+        </div>
+      </div>
+      </a>
+
+      <!-- Serie A -->
+      <a href="idolosserieA.html" class="blog-card-link">
+      <div class="competicion-card" id="SerieA">
+        <div class="competicion-image">
+          <img src="imagenes/idolosserieA.jpg" alt="Serie A">
+          <span class="competicion-badge badge-copa-america">Serie A</span>
+        </div>
+        <div class="competicion-content">
+          <h3 class="competicion-title">Ídolos eternos de cada club italiano</h3>
+          <div class="competicion-meta">
+            <span>Los ídolos más queridos de cada club italiano </span>
+            <span></span>
+          </div>
+          <p class="competicion-excerpt">
+           Un viaje por la historia del fútbol italiano a través de sus ídolos eternos: leyendas que marcaron época y dejaron una huella imborrable en los corazones de cada hinchada.</p>
+        </div>
+      </div>
+      </a>
+
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="copyright">
+      <p>&copy; 2025 Fútbol y Mate. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Función para el menú desplegable
+    document.querySelectorAll('.dropdown-content a').forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 100,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
